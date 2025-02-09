@@ -1,8 +1,8 @@
 import { containsDuplicate } from '../solutions/containsDuplicate';
 
 describe('containsDuplicate', () => {
-    test('should return true for empty array', () => {
-      expect(containsDuplicate([])).toBe(true);
+    test('should return false for empty array', () => {
+      expect(containsDuplicate([])).toBe(false);
     });
   
     test('should return false for array with no duplicates', () => {

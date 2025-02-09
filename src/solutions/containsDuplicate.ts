@@ -17,7 +17,7 @@ Output: true
 
 const containsDuplicate = (nums: number[]) => {
   if (!nums.length) {
-    return true;
+    return false;
   }
   const numsDict: Record<number, number> = {};
   for (let i = 0; i < nums.length; i++) {
