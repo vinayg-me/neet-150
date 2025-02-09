@@ -21,17 +21,20 @@
  */
 
 const findTwoSum = (numArray: number[], target: number) => {
-  // Iterate through the array to find the complementary array
   if (numArray && numArray.length === 1) {
     return null;
   }
+  
+  const numMap = new Map<number, number>();
+  
   for (let i = 0; i < numArray.length; i++) {
-   const complementElementToFind = target - numArray[i];
-   const complementIndex = numArray.indexOf(complementElementToFind);
-   if(complementIndex > -1 && complementIndex !== i) {
-    return [i, complementIndex]
-   }
+    const complement = target - numArray[i];
+    if (numMap.has(complement)) {
+      return [numMap.get(complement)!, i];
+    }
+    numMap.set(numArray[i], i);
   }
+  
   return [];
 };
 
