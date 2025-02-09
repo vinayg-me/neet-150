@@ -4,3 +4,4 @@ coverage/
 dist/
 *.js.map
 *.d.ts 
+.history/
