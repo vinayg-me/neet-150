@@ -55,3 +55,12 @@ const getProductOfArrayExceptSelf = (nums: number[]) => {
 export {
     getProductOfArrayExceptSelf
 }
+
+/**
+ * TODO:
+ *  While this solution meets the time complexity requirement of O(n), we can actually optimize the space complexity to O(1) (excluding the output array which is required). Here's how:
+1. We can use the output array to store prefix products
+2. Then we can use a single variable to keep track of the running postfix product
+3. This way, we eliminate the need for separate prefix and postfix arrays
+Would you like to see the space-optimized version of this solution?
+ */
