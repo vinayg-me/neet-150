@@ -15,22 +15,29 @@
 
 const getTopKFrequentElementsFromArray = (nums: number[], k: number) => {
     const frequencyMap = new Map<number, number>();
-    const result = new Set<number>;
     for(let i=0;i<nums.length;i++) {
         if(frequencyMap.has(nums[i])) {
             const curFrequencyOfNumber = (frequencyMap.get(nums[i]) ?? 0) + 1;
-            result.add(nums[i])
             frequencyMap.set(nums[i], curFrequencyOfNumber);
         } else {
             frequencyMap.set(nums[i], 1);
         }
     }
-    const sortedArray = Array.from(frequencyMap.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, k)
-    .map(entry => entry[0]);
+    const priorityQueue: number[] = [];
+    frequencyMap.forEach((value, key, map) => {
+        if(priorityQueue.length < k) {
+            priorityQueue.push(key);
+        } else {
+            const firstElement = priorityQueue[0];
+            const curFreqForFirstElement = frequencyMap.get(firstElement) || 0;
+            if(value > curFreqForFirstElement) {
+                priorityQueue.shift();
+                priorityQueue.push(key)
+            }
+        }
+    })
 
-    return sortedArray;
+    return priorityQueue;
 }
 
 export {
